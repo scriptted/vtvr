@@ -77,18 +77,26 @@ strong{
   color: @main-text-color;
 }
 
+.button, input, textarea, select{
+  border-radius:0 !important;
+}
+
 .button{
-  border-radius:0;
+  .interBold();
+  color: @main-bg !important;
+  background: @main-text-color !important;
 }
 
 .big-button{
   .interBold();
   display:inline-block;
-  color: @main-bg;
-  background: @main-text-color;
   font-size:2rem;
   line-height:2.5rem;
   padding:20px;
+}
+
+.button:hover{
+  color:@hover-text-color !important;
 }
 
 .columns{
@@ -101,6 +109,18 @@ a, a.visited{
 
 a:hover{
   color:@hover-text-color;
+}
+
+label{
+  color:@main-text-color !important;
+}
+
+#go-up{
+  position:fixed;
+  bottom:30px;
+  left:30px;
+  font-size:3rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1023px){
@@ -236,8 +256,6 @@ section .container .columns .column{
   display:block;
   width:100%;
   text-align:center;
-  position:absolute;
-  bottom:-200px;
 }
 
 .center { 
@@ -347,13 +365,14 @@ section .container .columns .column{
 }
 
 .timeline-desc{
-  margin-top:10vh;
   border:5px solid white;
+  border-top:0;
+  .interBold()
 }
 
 .timeline-part{
   height: 60vh;
-  text-align:justify;
+  .interSemiBold()
 }
 
 .timeline-part .filling{

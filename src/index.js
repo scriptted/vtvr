@@ -1,6 +1,12 @@
 import anime from 'animejs/lib/anime.es.js';
 
 (function() {
+  jQuery.event.special.touchstart = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("touchstart", handle, { passive: true });
+    }
+  };
+
   if (Modernizr.touch) {
 
   }
@@ -54,7 +60,7 @@ import anime from 'animejs/lib/anime.es.js';
       easing: 'easeOutSine',
       opacity: [0, 1],
       scale: function(el, i, l) {
-        return [anime.random(1.1, 2),0.8];
+        return [anime.random(1.1, 2),0.6];
       },
       translateY : function(el, i, l) {
         return [anime.random(-1000, 1000),120];
@@ -74,9 +80,6 @@ import anime from 'animejs/lib/anime.es.js';
       duration: 500,
       delay: 500,
       complete: function(anim) {
-        var e = document.createEvent('Event');
-        e.initEvent("scroll", true, true);
-        window.dispatchEvent(e);
       }
     });
   
@@ -89,15 +92,16 @@ import anime from 'animejs/lib/anime.es.js';
     }
   
     let percentage = getScrollPercent();
+    let prevPercentage = 0;
   
-    const tl = anime.timeline({ autoplay: false });
+    const tl = anime.timeline({ autoplay: true });
        
     tl.add({
       targets: '.frame',
       easing: 'easeOutSine',
       opacity: [0.1, 1],
       scale: function(el, i, l) {
-        return [anime.random(1.1, 2),0.8];
+        return [anime.random(1.1, 2),0.6];
       },
       translateY : function(el, i, l) {
         var index = parseInt(el.className.split('-')[2]);
@@ -110,20 +114,87 @@ import anime from 'animejs/lib/anime.es.js';
       duration: 500},
     0);
   
-    const tl2 = anime.timeline({ autoplay: false });
+    const tl2 = anime.timeline({ autoplay: true });
        
     tl2.add({
       targets: '.illustration',
       easing: 'easeOutSine',
+      scale: 0.65,
       opacity: [0, 1],
       duration: 500},
     0);
+
+    var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+    function preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault)
+          e.preventDefault();
+      e.returnValue = false;  
+    }
+
+    function preventDefaultForScrollKeys(e) {
+        if (keys[e.keyCode]) {
+            preventDefault(e);
+            return false;
+        }
+    }
+
+    function disableScroll() {
+      scrollStop = true;
+      if (window.addEventListener) // older FF
+          window.addEventListener('DOMMouseScroll', preventDefault, {passive: false});
+      window.onwheel = preventDefault; // modern standard
+      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+      window.ontouchmove  = preventDefault; // mobile
+      document.onkeydown  = preventDefaultForScrollKeys;
+    }
+
+    function enableScroll() {
+        scrollStop = false;
+        if (window.removeEventListener)
+            window.removeEventListener('DOMMouseScroll', preventDefault, {passive: false});
+        window.onmousewheel = document.onmousewheel = null; 
+        window.onwheel = null; 
+        window.ontouchmove = null;  
+        document.onkeydown = null;  
+        currentSectionIndex = Math.round($(window).scrollTop() / $(window).height());
+    }
+
+    let scrollStop = false;
+    var currentSectionIndex = Math.round($(window).scrollTop() / $(window).height());
   
-    window.addEventListener('scroll', () => {
-      percentage = Math.max(0.1, getScrollPercent());
-      tl.seek(tl.duration * (percentage / 100));
-      tl2.seek((tl2.duration * (percentage / 100)) - (tl2.duration * ((100 - percentage) / 100)));
-    });
+    document.addEventListener('wheel', function(event){
+        event.preventDefault();
+
+        var nextStop = currentSectionIndex;
+        if (event.deltaY > 0)
+        {
+          nextStop = (currentSectionIndex + 1) * $(window).height();
+        } else {
+          nextStop = (currentSectionIndex - 1) * $(window).height();
+        }
+
+        console.log(nextStop);
+        $('html').stop().animate(
+        {
+          scrollTop: nextStop
+        },
+        {
+          duration: 500,
+          start:function(){
+            disableScroll();
+          },
+          complete:function(){
+            enableScroll()
+          },
+          fail:function(){
+            enableScroll()
+          }
+        });
+    },
+    {passive: false});
+
     
     $('.minimal-btn').on('mouseover', function() {
       $(this).text('En savoir plus');
@@ -134,10 +205,44 @@ import anime from 'animejs/lib/anime.es.js';
   
     $('.goto').on('click', function(e){
       e.preventDefault();
+      scrollStop = true;
       var goto = $(this).data('goto');
-      $('html').animate({
+      $('html').stop().animate(
+      {
         scrollTop: $('#'+goto).offset().top
-      }, 500)
-    })
+      },
+      {
+        duration: 500,
+        start:function(){
+          disableScroll();
+        },
+        complete:function(){
+            enableScroll()
+        },
+        fail:function(){
+          enableScroll()
+        }
+      });
+    });
+
+    $('#go-up').on('click', function(e){
+      console.log('okj')
+      $('body, html').stop().animate(
+      {
+        scrollTop: 0
+      },
+      {
+        duration: 500,
+        start:function(){
+          disableScroll();
+        },
+        complete:function(){
+            enableScroll()
+        },
+        fail:function(){
+          enableScroll()
+        }
+      });
+    });
   }
 })();

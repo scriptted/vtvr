@@ -8,9 +8,10 @@ html
     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap")
     link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css")
     link(rel="stylesheet" href="/less/main.css")
-    script(defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js")
+    script(defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest")
     script(src="https://unpkg.com/scrollreveal")
   body
     include ./common/header.jade
     != yield
+    i.fas.fa-chevron-up(id="go-up")
     script(src="/js/app.js")

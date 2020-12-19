@@ -6,14 +6,49 @@ section.first
                 h1
                     | Contact
 
-                p
-                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet, ligula ac vehicula finibus, erat lacus rutrum tellus, non ornare ipsum risus tincidunt metus. Mauris quam est, tincidunt ut lobortis non, finibus nec mauris. Maecenas pulvinar lorem nec ipsum consectetur, sit amet consequat magna feugiat. 
+                form(action="")
+                    div.field
+                    label.label Nom & Prénom
+                    div.control
+                        input.input(type="text" placeholder="Vos nom et prénom")
 
-    img.illustration(src="/images/cabinet.png")
-    img.frame.frame-layer-1(src="/images/frame-layer-1.png")
-    img.frame.frame-layer-2(src="/images/frame-layer-2.png")
-    img.frame.frame-layer-3(src="/images/frame-layer-3.png")
-    img.frame.frame-layer-4(src="/images/frame-layer-4.png")
-    img.frame.frame-layer-5(src="/images/frame-layer-5.png")
-    img.frame.frame-layer-6(src="/images/frame-layer-6.png")
-section
+                    div.field
+                    label.label Courriel
+                    div.control
+                        input.input(type="email" placeholder="Votre adresse courriel")
+
+                    div.field
+                    label.label Objet
+                    div.control
+                        div.select
+                            select
+                                option Prise de rendez-vous
+                                option Demande d'informations
+                                option Autre
+
+                    div.field
+                    label.label Message
+                    div.control
+                        textarea.textarea(placeholder="Votre message")
+
+                    div.field.is-grouped
+                    div.control
+                        button.button.is-link Envoyer
+
+            div.column.is-5.has-text-centered
+                p.mb-6 16 Boulevard François Pompon, 21000 Dijon
+                p lundi	: 08:00–20:00
+                p mardi	: 08:00–20:00
+                p mercredi : 08:00–20:00
+                p jeudi : 08:00–20:00
+                p vendredi : 08:00–20:00
+                p samedi : 08:00–20:00
+                p.mb-6 dimanche : Fermé
+                p cedric.tomicki@gmail.com - vinterantoine.psychologue@gmail.com
+                p.mb-6 06 25 05 35 79 - 07 67 13 23 87
+                a(href="#" data-goto="contact-2" class="main-goto goto") 
+                    | Comment nous trouver ?
+                    br
+                    i.fas.fa-chevron-down.center
+
+section(id="contact-2")
