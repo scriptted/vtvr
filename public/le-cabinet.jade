@@ -1,18 +1,22 @@
 section.first
     div.container.is-fluid.full-height
-        div.columns.is-desktop.is-vcentered
+        div.columns.is-desktop.is-vcentered.is-multiline
             div.column.is-1
             div.column.is-5
                 h1
                     | Le
                     | cabinet
 
-                p.main.mb-6
+                p.main
                     | Deux psychologues cliniciens à Dijon vous proposent leurs compétences en Thérapie Cognitive et Comportementales (TCC), associées à des technologies de pointe en Réalité Virtuelles. Pour affronter et traiter vos phobies, ou pour une relaxation immersive, nos thérapies vous sont proposées dans un cadre accueillant et rassurant. Découvrez-en un peu plus sur nous.
+            div.column.is-5
+            div.column.is-1
+            div.column.is-12.has-text-centered
                 a(href="#" data-goto="cabinet-2" class="main-goto goto") 
                     | Qui sommes-nous ?
                     br
-                    i.fas.fa-chevron-down.center
+                    i.fas.fa-chevron-down.faa-falling.animated.center
+
     img.illustration(src="/images/cabinet.png")
     img.frame.frame-layer-1(src="/images/frame-layer-1.png")
     img.frame.frame-layer-2(src="/images/frame-layer-2.png")
