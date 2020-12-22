@@ -1,12 +1,6 @@
 import anime from 'animejs/lib/anime.es.js';
 
 (function() {
-  jQuery.event.special.touchstart = {
-    setup: function( _, ns, handle ){
-        this.addEventListener("touchstart", handle, { passive: true });
-    }
-  };
-
   if (Modernizr.touch) {
 
   }
@@ -22,8 +16,6 @@ import anime from 'animejs/lib/anime.es.js';
           },
           duration: 500,
           delay: 500,
-          complete: function(anim) {
-          }
         });
   
         anime({
@@ -34,8 +26,6 @@ import anime from 'animejs/lib/anime.es.js';
           },
           duration: 500,
           delay: 500,
-          complete: function(anim) {
-          }
         });
   
         anime({
@@ -49,13 +39,29 @@ import anime from 'animejs/lib/anime.es.js';
           },
           duration: 500,
           delay: 500,
-          complete: function(anim) {
-          }
+        });
+      }
+    });
+
+    anime({
+      targets: '.frame',
+      easing: 'easeOutSine',
+      opacity: [0, 1],
+      rotate : function(el, i, l) {
+        return i * 30;
+      },
+      duration: 500,
+      delay: 500,
+      complete: function(anim) {
+        anime({
+          targets: '.illustration',
+          opacity: [0, 1],
         });
       }
     });
   
-    anime({
+
+    /*anime({
       targets: '.frame',
       easing: 'easeOutSine',
       opacity: [0, 1],
@@ -71,19 +77,9 @@ import anime from 'animejs/lib/anime.es.js';
       duration: 500,
       complete: function(anim) {
       }
-    });
+    });*/
   
-    anime({
-      targets: '.illustration',
-      easing: 'easeOutSine',
-      opacity: [0, 1],
-      duration: 500,
-      delay: 500,
-      complete: function(anim) {
-      }
-    });
-  
-    function getScrollPercent() {
+    /*function getScrollPercent() {
       var h = document.documentElement,
       b = document.body,
       st = 'scrollTop',
@@ -122,7 +118,7 @@ import anime from 'animejs/lib/anime.es.js';
       scale: 0.65,
       opacity: [0, 1],
       duration: 500},
-    0);
+    0);*/
 
     var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
