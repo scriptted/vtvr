@@ -181,8 +181,13 @@ label{
   margin-right:10px;
 }
 
-#header .navbar .navbar-menu a:hover{
+#header .navbar .navbar-menu a:hover, #header .navbar .navbar-menu a:active, #header .navbar .navbar-menu a.active{
   background: none;
+  color: @hover-text-color;
+}
+
+#header .navbar .navbar-menu a.active{
+  text-decoration: underline;
 }
 
 
