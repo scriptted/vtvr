@@ -163,6 +163,55 @@ import anime from 'animejs/lib/anime.es.js';
 
     let scrollStop = false;
     var currentSectionIndex = Math.round($(window).scrollTop() / $(window).height());
+
+    var isScrolling;
+    var scrollDirection;
+    var lastScrollTop = 0;
+
+
+    window.addEventListener('scroll', function ( event ) {
+      var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+      if (st > lastScrollTop){
+        scrollDirection = 'down';
+      } else {
+        scrollDirection = 'up';
+      }
+      lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      // Clear our timeout throughout the scroll
+      window.clearTimeout( isScrolling );
+    
+      // Set a timeout to run after scrolling ends
+      isScrolling = setTimeout(function() {
+    
+        var nextStop = 0;
+        if (scrollDirection == 'down')
+        {
+          nextStop = (currentSectionIndex + 1) * $(window).height();
+        } else {
+          nextStop = (currentSectionIndex - 1) * $(window).height();
+        }
+
+        //console.log(nextStop);
+        $('html').stop().animate(
+        {
+          scrollTop: nextStop
+        },
+        {
+          duration: 500,
+          start:function(){
+            disableScroll();
+          },
+          complete:function(){
+            enableScroll()
+          },
+          fail:function(){
+            enableScroll()
+          }
+        });
+    
+      }, 66);
+    
+    }, false);
   
     document.addEventListener('wheel', function(event){
         event.preventDefault();
@@ -175,7 +224,7 @@ import anime from 'animejs/lib/anime.es.js';
           nextStop = (currentSectionIndex - 1) * $(window).height();
         }
 
-        console.log(nextStop);
+        //console.log(nextStop);
         $('html').stop().animate(
         {
           scrollTop: nextStop
@@ -226,7 +275,6 @@ import anime from 'animejs/lib/anime.es.js';
     });
 
     $('#go-up').on('click', function(e){
-      console.log('okj')
       $('body, html').stop().animate(
       {
         scrollTop: 0
