@@ -40,6 +40,7 @@ import anime from 'animejs/lib/anime.es.js';
           duration: 500,
           delay: 500,
         });
+
       }
     });
 
