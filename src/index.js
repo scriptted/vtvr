@@ -165,6 +165,36 @@ import anime from 'animejs/lib/anime.es.js';
     var scrollDirection;
     var lastScrollTop = 0;
 
+    var isScrolling = setTimeout(function() {
+    
+      var nextStop = 0;
+      if (scrollDirection == 'down')
+      {
+        nextStop = (currentSectionIndex + 1) * $(window).height();
+      } else {
+        nextStop = (currentSectionIndex - 1) * $(window).height();
+      }
+
+      //console.log(nextStop);
+      $('html').stop().animate(
+      {
+        scrollTop: nextStop
+      },
+      {
+        duration: 500,
+        start:function(){
+          disableScroll();
+        },
+        complete:function(){
+          enableScroll()
+        },
+        fail:function(){
+          enableScroll()
+        }
+      });
+  
+    }, 100);
+
 
     window.addEventListener('scroll', function ( event ) {
       var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
@@ -178,35 +208,7 @@ import anime from 'animejs/lib/anime.es.js';
       window.clearTimeout( isScrolling );
     
       // Set a timeout to run after scrolling ends
-      isScrolling = setTimeout(function() {
-    
-        var nextStop = 0;
-        if (scrollDirection == 'down')
-        {
-          nextStop = (currentSectionIndex + 1) * $(window).height();
-        } else {
-          nextStop = (currentSectionIndex - 1) * $(window).height();
-        }
-
-        //console.log(nextStop);
-        $('html').stop().animate(
-        {
-          scrollTop: nextStop
-        },
-        {
-          duration: 500,
-          start:function(){
-            disableScroll();
-          },
-          complete:function(){
-            enableScroll()
-          },
-          fail:function(){
-            enableScroll()
-          }
-        });
-    
-      }, 66);
+      
     
     }, false);
   
@@ -221,6 +223,8 @@ import anime from 'animejs/lib/anime.es.js';
           nextStop = (currentSectionIndex - 1) * $(window).height();
         }
 
+        window.clearTimeout( isScrolling );
+        
         //console.log(nextStop);
         $('html').stop().animate(
         {
