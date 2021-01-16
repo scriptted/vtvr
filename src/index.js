@@ -44,6 +44,9 @@ import anime from 'animejs/lib/anime.es.js';
       }
     });
 
+    ScrollReveal().reveal('.reveal', { 
+    });
+
     anime({
       targets: '.frame',
       easing: 'easeOutSine',
@@ -224,7 +227,7 @@ import anime from 'animejs/lib/anime.es.js';
         }
 
         window.clearTimeout( isScrolling );
-        
+
         //console.log(nextStop);
         $('html').stop().animate(
         {
