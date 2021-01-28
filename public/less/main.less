@@ -34,7 +34,7 @@ body{
 
 body{
   .interRegular();
-  padding: 30px 30px 0;
+  padding: 30px 0 0 0;
   background: @main-bg;
   color: @main-text-color;
   margin: 0;
@@ -162,6 +162,7 @@ label{
 /////MENU////
 #header{
   position:relative;
+  padding:0 30px;
 }
 
 #header .navbar{
@@ -234,6 +235,15 @@ section .container .columns .column{
   margin-top:-188px;
   right:230px;
   opacity:0;
+}
+
+.filler{
+  height:150px;
+}
+
+.goto-ctr{
+  position:absolute !important;
+  bottom:30px;
 }
 
 .main-goto{
@@ -384,4 +394,24 @@ p.main{
 
 .timeline-part .number p{
   color:@main-bg
+}
+
+
+
+////RELAXATION////
+#videojs-vr-player{
+  width:100vw;
+  height:100vh;
+}
+
+#hoverjs{
+  position:absolute;
+  top:30px;
+  left:30px;
+  width:400px;
+  color:#ffffff;
+}
+
+.video-js .vjs-big-play-button{
+  display:none !important;
 }

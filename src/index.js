@@ -1,6 +1,32 @@
 import anime from 'animejs/lib/anime.es.js';
-
 (function() {
+   
+  var pano=document.getElementById('videojs-vr-player');
+  if(pano){
+    var player = videojs('videojs-vr-player',{
+      autoplay: 'muted',
+      loop: true,
+      controlBar: {
+        playToggle: false,
+        captionsButton: false,
+        chaptersButton: false,            
+        subtitlesButton: false,
+        remainingTimeDisplay: false,
+        progressControl: {
+          seekBar: false
+        },
+        fullscreenToggle: false,
+        playbackRateMenuButton: false,
+      },
+    });
+
+    player.vr({projection: 'EAC'});
+    player.ready(function() {
+      player.controlBar.progressControl.disable();
+    });
+  }
+  
+
   if (Modernizr.touch) {
 
   }

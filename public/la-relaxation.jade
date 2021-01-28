@@ -8,12 +8,11 @@ section.first
                     | Relaxation
 
                 p.main.mb-6
-                    | Les phobies sont parmis les troubles les plus propices au traitement par la Thérapie par Exposition en Réalité Virtuelle. Vous pourrez découvrir ci-dessous une liste non exhaustive des phobies que nous traitons, ainsi que d'autres troubles.
-                    br
-                    | N'hésitez pas à #[a(href="contact") nous contacter] si votre situation n'est pas décrite ci-dessous, nous pourrons toujours vous orienter vers une solution adaptée à vos besoins.
+                    | La technologie de Réalité Virtuelle nous permet de vous proposer des séances de relaxation dans des environnements immersifs. Enfilez le casque et laissez vous simplement porter par un programme de détente.
             div.column.is-5
             div.column.is-1
-            div.column.is-12.has-text-centered
+            div.column.is-12.filler
+            div.column.is-12.has-text-centered.goto-ctr
                 a(href="#" data-goto="relaxation-2" class="main-goto goto") 
                     | Ça ressemble à quoi ?
                     br
@@ -26,6 +25,8 @@ section.first
     img.frame.frame-layer-5.is-hidden-touch(src="/images/frame-layer-5_alt.png")
     img.frame.frame-layer-6.is-hidden-touch(src="/images/frame-layer-6_alt.png")
 section(id="relaxation-2")
-    div.container.is-fluid.full-height
-        div.columns.is-vcentered.is-desktop.is-multiline
-            
+    video(width="100%" height="100%" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline)
+        source(src="images/vr-space.mp4" type="video/mp4")
+    div(id="hoverjs").card
+        div.card-content
+            p Maintenez le clic et bougez votre souris pour explorer la vidéo à 360° comme le permettrait un casque VR.
