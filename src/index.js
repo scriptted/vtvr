@@ -1,5 +1,11 @@
 import anime from 'animejs/lib/anime.es.js';
 (function() {
+
+  window.mobileCheck = function() {
+    let check = false;
+    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+    return check;
+  };
    
   var pano=document.getElementById('videojs-vr-player');
   if(pano){
@@ -25,9 +31,31 @@ import anime from 'animejs/lib/anime.es.js';
       player.controlBar.progressControl.disable();
     });
   }
-  
 
-  if (Modernizr.touch) {
+  console.log(mobileCheck());
+
+  if (mobileCheck()) {
+    $('.goto').on('click', function(e){
+      e.preventDefault();
+      var goto = $(this).data('goto');
+      $('html').stop().animate(
+      {
+        scrollTop: $('#'+goto).offset().top
+      },
+      {
+        duration: 500
+      });
+    });
+
+    $('#go-up').on('click', function(e){
+      $('body, html').stop().animate(
+      {
+        scrollTop: 0
+      },
+      {
+        duration: 500
+      });
+    });
 
   }
   else 
@@ -89,66 +117,6 @@ import anime from 'animejs/lib/anime.es.js';
         });
       }
     });
-  
-
-    /*anime({
-      targets: '.frame',
-      easing: 'easeOutSine',
-      opacity: [0, 1],
-      scale: function(el, i, l) {
-        return [anime.random(1.1, 2),0.6];
-      },
-      translateY : function(el, i, l) {
-        return [anime.random(-1000, 1000),120];
-      },
-      translateX : function(el, i, l) {
-        return [anime.random(-1000, 1000),120];
-      },
-      duration: 500,
-      complete: function(anim) {
-      }
-    });*/
-  
-    /*function getScrollPercent() {
-      var h = document.documentElement,
-      b = document.body,
-      st = 'scrollTop',
-      sh = 'scrollHeight';
-      return 100 - ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100);
-    }
-  
-    let percentage = getScrollPercent();
-    let prevPercentage = 0;
-  
-    const tl = anime.timeline({ autoplay: true });
-       
-    tl.add({
-      targets: '.frame',
-      easing: 'easeOutSine',
-      opacity: [0.1, 1],
-      scale: function(el, i, l) {
-        return [anime.random(1.1, 2),0.6];
-      },
-      translateY : function(el, i, l) {
-        var index = parseInt(el.className.split('-')[2]);
-        return [index * 160 , 120];
-      },
-      translateX : function(el, i, l) {
-        var index = parseInt(el.className.split('-')[2]);
-        return [-index * 160 , 120];
-      },
-      duration: 500},
-    0);
-  
-    const tl2 = anime.timeline({ autoplay: true });
-       
-    tl2.add({
-      targets: '.illustration',
-      easing: 'easeOutSine',
-      scale: 0.65,
-      opacity: [0, 1],
-      duration: 500},
-    0);*/
 
     var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
@@ -160,19 +128,19 @@ import anime from 'animejs/lib/anime.es.js';
     }
 
     function preventDefaultForScrollKeys(e) {
-        if (keys[e.keyCode]) {
-            preventDefault(e);
-            return false;
-        }
+      if (keys[e.keyCode]) {
+          preventDefault(e);
+          return false;
+      }
     }
 
     function disableScroll() {
       scrollStop = true;
-      if (window.addEventListener) // older FF
+      if (window.addEventListener)
           window.addEventListener('DOMMouseScroll', preventDefault, {passive: false});
-      window.onwheel = preventDefault; // modern standard
-      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-      window.ontouchmove  = preventDefault; // mobile
+      window.onwheel = preventDefault;
+      window.onmousewheel = document.onmousewheel = preventDefault;
+      window.ontouchmove  = preventDefault;
       document.onkeydown  = preventDefaultForScrollKeys;
     }
 
@@ -204,7 +172,6 @@ import anime from 'animejs/lib/anime.es.js';
         nextStop = (currentSectionIndex - 1) * $(window).height();
       }
 
-      //console.log(nextStop);
       $('html').stop().animate(
       {
         scrollTop: nextStop
@@ -232,13 +199,9 @@ import anime from 'animejs/lib/anime.es.js';
       } else {
         scrollDirection = 'up';
       }
-      lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-      // Clear our timeout throughout the scroll
+      lastScrollTop = st <= 0 ? 0 : st; 
+
       window.clearTimeout( isScrolling );
-    
-      // Set a timeout to run after scrolling ends
-      
-    
     }, false);
   
     document.addEventListener('wheel', function(event){
@@ -254,7 +217,6 @@ import anime from 'animejs/lib/anime.es.js';
 
         window.clearTimeout( isScrolling );
 
-        //console.log(nextStop);
         $('html').stop().animate(
         {
           scrollTop: nextStop
@@ -321,6 +283,45 @@ import anime from 'animejs/lib/anime.es.js';
           enableScroll()
         }
       });
+    });
+    
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+  
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+  
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+  
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+  
+        });
+      });
+    }
+  
+  });
+
+  function initMap() {
+    const cabinet = { lat: 47.334529990323716, lng: 5.022017627424289 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: cabinet,
+    });
+    const marker = new google.maps.Marker({
+      position: cabinet,
+      map: map,
     });
   }
 })();

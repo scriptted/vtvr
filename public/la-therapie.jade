@@ -12,7 +12,7 @@ section.first(id="therapie-1")
             div.column.is-5
             div.column.is-1
             div.column.is-12.filler
-            div.column.is-12.has-text-centered.goto-ctr
+            div.column.is-12.has-text-centered.goto-ctr.is-hidden-touch
                 a(href="#" data-goto="therapie-2" class="main-goto goto") 
                     | Je veux en savoir plus
                     br
@@ -43,7 +43,7 @@ section(id="therapie-2")
 
             div.column.is-1
             div.column.is-12.filler
-            div.column.is-12.has-text-centered.goto-ctr
+            div.column.is-12.has-text-centered.goto-ctr.is-hidden-touch
                 a(href="#" data-goto="therapie-3" class="main-goto goto") 
                     | Le traitement des phobies
                     br
@@ -51,77 +51,46 @@ section(id="therapie-2")
 section(id="therapie-3")
     div.container.is-fluid.full-height
         div.columns.is-desktop.is-vcentered.is-multiline
-            div.column.is-12.has-text-centered
-                h1
-                    | Les
-                    | phobies
-                p.main.mb-6
+            div.column.is-1
+            div.column.is-5
+                p.mb-6
                     | Les phobies sont parmis les troubles les plus propices au traitement par la Thérapie par Exposition en Réalité Virtuelle. Vous pourrez découvrir ci-dessous une liste non exhaustive des phobies que nous traitons, ainsi que d'autres troubles.
                     br
                     | N'hésitez pas à #[a(href="contact") nous contacter] si votre situation n'est pas décrite ci-dessous, nous pourrons toujours vous orienter vers une solution adaptée à vos besoins.
-            div.column.is-1
+                p
+                    | - Agoraphobie (peur de se retrouver dans un lieu public)  
+                    br
+                    | - Phobies sociales (peur excessive d’une ou plusieurs situations sociales) 
+                    br
+                    | - Entomophobie (phobie des insectes)  
+                    br
+                    | - Claustrophobie (peur des espaces confinés, des lieux clos, des petites pièces et de l'enfermement) 
+                    br
+                    | - Acrophobie (peur du vide) 
+                    br 
+                    | - Amaxophobie (peur de la conduite) 
+                    br
+                    | - Sidérodromophobie (peur du train) 
+                    br
+                    | - Zoophobie (peur des animaux) 
+                    br
+                    | - Autres troubles anxieux (Stress post-traumatique, Trouble obsessionnel compulsif…) 
             div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
+                div.columns.is-desktop.is-multiline
+                    div.column.is-1
+                    div.column.is-5
                         figure.image.is-square
                             img.reveal(src="/images/foule.jpg")
                     div.column.is-5
-                        h3 Agoraphobies
-                        p.mb-4 École, hopital, métro, bus, train, gare, aéroport, avion, tunnel, ascenceur, grandes surfaces, ...
-                    div.column.is-2
-            div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
-                        figure.image.is-square
-                            img.reveal(src="/images/hauteur.jpg")
-                    div.column.is-5
-                        h3 Phobies spécifiques 
-                        p.mb-4 Hauteur, claustrophobie, affluences, parler en public, conduite, animaux (chien, chat, pigeon, rat), insectes volants (araignée, abeille), école, vomi, sang injection, ...
-                    div.column.is-2
-            div.column.is-1
-            div.column.is-1
-            div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
                         figure.image.is-square
                             img.reveal(src="/images/speech.jpg")
+                    div.column.is-1
+                    div.column.is-1
                     div.column.is-5
-                        h3 Phobies sociales
-                        p.mb-4 Parler en public, école, hôpital, amphithéâtre, immeuble, ...
-                    div.column.is-2
-            div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
+                        figure.image.is-square
+                            img.reveal(src="/images/conduite.jpg")
+                    div.column.is-5
                         figure.image.is-square
                             img.reveal(src="/images/angoisse.jpg")
-                    div.column.is-5
-                        h3 Autres troubles anxieux
-                        p.mb-4 Stress post-traumatique, TOC (aéroport, hôpital, pièce sous-sol), ...
-                    div.column.is-2
-            div.column.is-1
-            div.column.is-1
-            div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
-                        figure.image.is-square
-                            img.reveal(src="/images/addiction.jpg")
-                    div.column.is-5
-                        h3 Addictions
-                        p.mb-4 Tabac, alcool, jeux d’argent, drogues, ...
-                    div.column.is-2
-            div.column.is-5
-                div.columns.is-desktop
-                    div.column.is-2
-                    div.column.is-3
-                        figure.image.is-square
-                            img.reveal(src="/images/poids.jpg")
-                    div.column.is-5
-                        h3 Troubles alimentaires
-                        p.mb-4 Dysmorphophobie, expositions diverses, ...
-                    div.column.is-2
+                    div.column.is-1
             div.column.is-1

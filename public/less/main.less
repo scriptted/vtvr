@@ -5,12 +5,20 @@
 
 @header-height:80px;
 
+.transition-properties(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
 html{
   font-size:14px;
 }
 
 body{
   overflow:hidden;
+  min-height:100vh;
 }
 
 .inter {
@@ -75,7 +83,7 @@ h4{
 
 p{
   .interSemiBold();
-  font-size:1.2rem;
+  font-size:1.6rem;
 }
 
 strong{
@@ -96,7 +104,7 @@ strong{
   .interBold();
   display:inline-block;
   font-size:2rem;
-  line-height:2.5rem;
+  line-height:2rem;
   padding:20px;
 }
 
@@ -106,6 +114,8 @@ strong{
 
 .columns{
   max-width:100%;
+  margin-left:unset;
+  margin-right:unset;
 }
 
 a, a.visited{
@@ -126,35 +136,42 @@ label{
   left:30px;
   font-size:3rem;
   cursor: pointer;
+  z-index:10000;
 }
 
 @media screen and (max-width: 1023px){
   html{
-    font-size:50%;
+    font-size:70%;
   }
 
   h1{
-    font-size:3rem;
-    line-height:3.5rem;
+    font-size:3.6rem;
+    line-height:4rem;
     margin-bottom:30px;
   }
   
   h2{
-    font-size:2rem;
-    line-height:2.5rem;
+    font-size:2.7rem;
+    line-height:3.1rem;
     margin-bottom:30px;
   }
   
   h3{
-    font-size:1rem;
-    line-height:1.5rem;
+    font-size:1.8rem;
+    line-height:2.2rem;
     margin-bottom:30px;
   }
   
   h4{
-    font-size:0.5rem;
-    line-height:0.75rem;
+    font-size:0.9rem;
+    line-height:1.3rem;
     margin-bottom:30px;
+  }
+
+  .big-button{
+    font-size:2rem;
+    line-height:0.8rem;
+    padding:20px;
   }
 }
 
@@ -198,6 +215,35 @@ label{
   text-decoration: underline !important;
 }
 
+.navbar-burger{
+  color:#ffffff;
+  z-index:12000;
+}
+
+@media screen and (max-width: 1023px){
+  #header .navbar .navbar-menu a{
+    font-size:2.5rem;
+  }
+
+  #header .navbar .navbar-menu{
+    position:fixed;
+    width:70vw;
+    height:100%;
+    background-color:@main-bg;
+    top:0px;
+    left: -70vw;
+    z-index:11000;
+    .transition-properties(left .25s linear);
+  }
+
+  #header .navbar .navbar-menu.is-active{
+    left: 0px;
+    visibility: visible;
+    .transition-properties(left .25s linear);
+  }
+}
+
+
 
 /////SECTION/////
 section{
@@ -223,22 +269,26 @@ section .container .columns .column{
 
 .frame{
   position:absolute;
-  right:200px;
+  width:270px;
+  right:300px;
   top:50%;
-  margin-top:-383px;
+  margin-top:-300px;
   opacity:0;
 }
 
 .illustration{
   position:absolute;
+  width:225px;
   top:50%;
-  margin-top:-188px;
-  right:230px;
+  margin-top:-150px;
+  right:320px;
   opacity:0;
 }
 
 .filler{
-  height:150px;
+  height:0px;
+  margin:0;
+  padding:0;
 }
 
 .goto-ctr{
@@ -267,7 +317,12 @@ section .container .columns .column{
 }
 
 p.main{
-  font-size:1.6rem;
+  font-size:2.4rem;
+  text-align:justify;
+}
+
+p.secondary{
+  font-size:1.4rem;
   text-align:justify;
 }
 
@@ -291,6 +346,20 @@ p.main{
 
   .main-goto{
     position:relative;
+  }
+}
+
+@media screen and (max-width: 1440px){
+  .frame{
+    width:175px;
+    margin-top:-191px;
+    right:250px;
+  }
+  
+  .illustration{
+    width:145px;
+    margin-top:-94px;
+    right:265px;
   }
 }
 
@@ -343,6 +412,26 @@ p.main{
   right:-5px;
 }
 
+
+@media screen and (max-width: 768px){
+  .stair-card{
+    width:100%;
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+
+  .card-1{
+    margin-left:0;
+  }
+
+  .stair-card .card-content{
+    padding-right:0;
+  }
+
+  .stair-card img{
+    width:100%;
+  }
+}
 
 
 ////CABINET////
@@ -414,4 +503,10 @@ p.main{
 
 .video-js .vjs-big-play-button{
   display:none !important;
+}
+
+
+#map {
+  height: 100%;
+  width: 100%;
 }

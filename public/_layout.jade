@@ -15,6 +15,10 @@ html
     script(src="https://unpkg.com/scrollreveal")
     script(src="js/video.min.js")
     script(src="js/videojs-vr.min.js")
+    script(
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc6HahV7ZPAzT4bWb3IibyJqJ3XemVqZ0&callback=initMap&libraries=&v=weekly"
+      async
+    )
   body
     include ./common/header.jade
     != yield
