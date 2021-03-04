@@ -22,7 +22,7 @@ import anime from 'animejs/lib/anime.es.js';
         progressControl: {
           seekBar: false
         },
-        fullscreenToggle: false,
+        fullscreenToggle: true,
         playbackRateMenuButton: false,
       },
     });
