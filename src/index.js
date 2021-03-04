@@ -27,7 +27,10 @@ import anime from 'animejs/lib/anime.es.js';
       },
     });
 
-    player.vr({projection: 'EAC'});
+    player.vr({
+      projection: 'EAC',
+      motionControls: true
+    });
     player.ready(function() {
       player.controlBar.progressControl.disable();
     });
