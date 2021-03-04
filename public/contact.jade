@@ -52,7 +52,18 @@ section.first
                     i.fas.fa-chevron-down.faa-falling.animated.center
 
 section(id="contact-2")
-    div.container.is-fluid.full-height
-        div.columns.is-vcentered.is-desktop.is-multiline
-            div.column.is-12
-                div(id="map")
+    div(id="map")
+    script.
+        function initMap() {
+            const cabinet = { lat: 47.334529990323716, lng: 5.022017627424289 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                mapId: 'fdc96da436c66769',
+                zoom: 15,
+                center: cabinet,
+            });
+            const marker = new google.maps.Marker({
+                position: cabinet,
+                map: map,
+            });
+        }
+script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc6HahV7ZPAzT4bWb3IibyJqJ3XemVqZ0&map_ids=fdc96da436c66769&callback=initMap&libraries=&v=weekly" async)
