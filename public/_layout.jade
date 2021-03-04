@@ -12,13 +12,10 @@ html
     link(rel="stylesheet" href="/css/video-js.min.css")
     link(rel="stylesheet" href="/css/videojs-vr.css")
     link(rel="stylesheet" href="/less/main.css")
-    script(src="https://unpkg.com/scrollreveal")
+    script(src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js")
     script(src="js/video.min.js")
     script(src="js/videojs-vr.min.js")
-    script(
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc6HahV7ZPAzT4bWb3IibyJqJ3XemVqZ0&callback=initMap&libraries=&v=weekly"
-      async
-    )
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc6HahV7ZPAzT4bWb3IibyJqJ3XemVqZ0&callback=initMap&libraries=&v=weekly" async)
   body
     include ./common/header.jade
     != yield

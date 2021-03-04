@@ -1,4 +1,16 @@
 import anime from 'animejs/lib/anime.es.js';
+function initMap() {
+  const cabinet = { lat: 47.334529990323716, lng: 5.022017627424289 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: cabinet,
+  });
+  const marker = new google.maps.Marker({
+    position: cabinet,
+    map: map,
+  });
+}
+
 (function() {
 
   window.mobileCheck = function() {
@@ -313,15 +325,5 @@ import anime from 'animejs/lib/anime.es.js';
   
   });
 
-  function initMap() {
-    const cabinet = { lat: 47.334529990323716, lng: 5.022017627424289 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: cabinet,
-    });
-    const marker = new google.maps.Marker({
-      position: cabinet,
-      map: map,
-    });
-  }
+  
 })();
