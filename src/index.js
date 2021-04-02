@@ -289,6 +289,33 @@ import anime from 'animejs/lib/anime.es.js';
       });
     });
     
+    var cabinet3=document.getElementById('cabinet-3');
+    if(cabinet3){
+      $('.cabinet-img').on('mouseenter', function(){
+        var elt = $(this);
+        elt.css('width', '50%');
+        if(elt.data('index') > 2){
+          elt.css('marginLeft', '-20%');
+          $('.cabinet-img').each(function(){
+            if($(this).data('index') <= 2){
+              $(this).css('marginLeft', '-5%');
+            }
+          })
+        }
+      }).on('mouseleave', function(){
+        var elt = $(this);
+        elt.css('width', '25%');
+        if(elt.data('index') > 2){
+          elt.css('marginLeft', 'unset');
+          $('.cabinet-img').each(function(){
+            if($(this).data('index') <= 2){
+              $(this).css('marginLeft', 'unset');
+            }
+          })
+        }
+      })
+    }
+
   }
 
   document.addEventListener('DOMContentLoaded', () => {

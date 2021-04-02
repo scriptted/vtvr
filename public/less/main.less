@@ -304,6 +304,7 @@ section .container .columns .column{
 .goto-ctr{
   position:absolute !important;
   bottom:30px;
+  left:0;
 }
 
 .main-goto{
@@ -462,6 +463,36 @@ p.secondary{
 ////CABINET////
 .pres-card .card-content p{
   margin-bottom:15px;
+}
+
+.cabinet-img{
+  overflow:hidden;
+  height:80vh;
+  transition: all 0.5s;
+}
+
+.cabinet-img img{
+  position:absolute;
+  top:0;
+  left:0;
+  height: 100% !important;
+  width: unset !important;
+  max-width: unset !important;
+}
+
+@media screen and (max-width: 768px){
+  .cabinet-img{
+    height:auto;
+  }
+  
+  .cabinet-img img{
+    position:relative;
+    top:unset;
+    left:unset;
+    height: auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
 }
 
 

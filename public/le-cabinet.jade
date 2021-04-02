@@ -27,7 +27,7 @@ section.first
     img.frame.frame-layer-6.is-hidden-touch(src="/images/frame-layer-6_alt.png")
 section(id="cabinet-2")
     div.container.is-fluid.full-height
-        div.columns.is-desktop.is-vcentered
+        div.columns.is-desktop.is-vcentered.is-multiline
             div.column.is-1
             div.column.is-4.pres-card
                 img.is-16by9(src="/images/cedric-tomicki.jpg")
@@ -43,8 +43,25 @@ section(id="cabinet-2")
                 img.is-16by9(src="/images/antoine-vinter.jpg")
                 div.card-content
                     h2 Antoine Vinter
-                    p Psychologue clinicien, psychothérapeute, hypnothérapeute, spécialisé en Neuropsychologie et psychologie du développement. Également salarié de l’association ACODEGE et chargé de cours de neuropsychologie et de psychologie développementale à l’Université de Bourgogne.
+                    p Psychologue clinicien, psychothérapeute, hypnothérapeute, spécialisé en Neuropsychologie et psychologie du développement. Je suis également salarié dans le secteur médico-social et chargé de cours de neuropsychologie et psychologie développementale à l’Université de Bourgogne.
                     p #[strong vinterantoine.psychologue@gmail.com ]
                     p #[strong 07 67 13 23 87 ]
                     p #[strong N° ADELI : 21 93 0677 6 ]
             div.column.is-1
+            div.column.is-12.has-text-centered.goto-ctr.is-hidden-touch
+                a(href="#" data-goto="cabinet-3" class="main-goto goto") 
+                    | Photos
+                    br
+                    i.fas.fa-chevron-down.faa-falling.animated.center
+
+section(id="cabinet-3")
+    div.container.is-fluid.full-height
+        div.columns.is-desktop.is-vcentered
+            div.column.is-3.cabinet-img(data-index="1")
+                img(src="/images/cabinet-1.jpg")
+            div.column.is-3.cabinet-img(data-index="2")
+                img(src="/images/cabinet-2.jpg")
+            div.column.is-3.cabinet-img(data-index="3")
+                img(src="/images/cabinet-3.jpg")
+            div.column.is-3.cabinet-img(data-index="4")
+                img(src="/images/cabinet-4.jpg")
