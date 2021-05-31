@@ -9,28 +9,28 @@ section.first
                 form(id="mailer-form" method="POST" action="/mail")
                     div(id="success-ctr")
                     div.field
-                    label.label Nom & Prénom
+                    label.label Nom & Prénom *
                     div.control
-                        input.input(type="text" name="name" placeholder="Vos nom et prénom")
+                        input.input(type="text" name="name" id="name" placeholder="Vos nom et prénom" required)
 
                     div.field
-                    label.label Courriel
+                    label.label Courriel *
                     div.control
-                        input.input(type="email" name="email" placeholder="Votre adresse courriel")
+                        input.input(type="email" name="email" id="email" placeholder="Votre adresse courriel" required)
 
                     div.field
-                    label.label Objet
+                    label.label Objet *
                     div.control
                         div.select(style="width:100%")
-                            select(name="object" style="width:100%")
+                            select(name="object" id="object" style="width:100%" required)
                                 option Prise de rendez-vous
                                 option Demande d'informations
                                 option Autre
 
                     div.field
-                    label.label Message
+                    label.label Message *
                     div.control
-                        textarea.textarea(name="message" placeholder="Votre message")
+                        textarea.textarea(name="message" id="message" placeholder="Votre message" required)
 
                     div.field.is-grouped
                     div.control
@@ -68,7 +68,17 @@ section(id="contact-2")
             });
         }
         function onSubmit(token) {
-            document.getElementById("mailer-form").submit();
+            form = document.getElementById("mailer-form")
+            
+            if (!form.checkValidity()) {
+                if (form.reportValidity) {
+                    form.reportValidity();
+                } else {
+                    alert(msg.ieErrorForm);
+                }
+            } else {
+                form.submit();
+            }
         }
 
         function getParameterByName(name, url = window.location.href) {
