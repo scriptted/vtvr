@@ -6,22 +6,23 @@ section.first
                 h1
                     | Contact
 
-                form(action="")
+                form(id="mailer-form" method="POST" action="http://localhost:11000/mail")
+                    div(id="success-ctr")
                     div.field
                     label.label Nom & Prénom
                     div.control
-                        input.input(type="text" placeholder="Vos nom et prénom")
+                        input.input(type="text" name="name" placeholder="Vos nom et prénom")
 
                     div.field
                     label.label Courriel
                     div.control
-                        input.input(type="email" placeholder="Votre adresse courriel")
+                        input.input(type="email" name="email" placeholder="Votre adresse courriel")
 
                     div.field
                     label.label Objet
                     div.control
                         div.select
-                            select
+                            select(name="object")
                                 option Prise de rendez-vous
                                 option Demande d'informations
                                 option Autre
@@ -29,11 +30,11 @@ section.first
                     div.field
                     label.label Message
                     div.control
-                        textarea.textarea(placeholder="Votre message")
+                        textarea.textarea(name="message" placeholder="Votre message")
 
                     div.field.is-grouped
                     div.control
-                        button.button.is-link Envoyer
+                        button.button.is-link.g-recaptcha(data-sitekey="6LfTGQMbAAAAAMPw1JvB5QenfOOzkgyguZfr5aeC" data-callback='onSubmit' data-action='submit') Envoyer
 
             div.column.is-5.has-text-centered
                 p.mb-6 16 Boulevard François Pompon, 21000 Dijon
@@ -44,8 +45,8 @@ section.first
                 p vendredi : 08:00–20:00
                 p samedi : 08:00–20:00
                 p.mb-6 dimanche : Fermé
-                p cedric.tomicki@gmail.com - vinterantoine.psychologue@gmail.com
-                p.mb-6 06 25 05 35 79 - 07 67 13 23 87
+                p cedric.tomicki@gmail.com - 06 25 05 35 79
+                p.mb-6 vinterantoine.psychologue@gmail.com - 07 67 13 23 87
                 a(href="#" data-goto="contact-2" class="main-goto goto is-hidden-touch")
                     | Comment nous trouver ?
                     br
@@ -66,4 +67,23 @@ section(id="contact-2")
                 map: map,
             });
         }
+        function onSubmit(token) {
+            document.getElementById("mailer-form").submit();
+        }
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        const success = getParameterByName('success');
+        if(success){
+            document.getElementById("success-ctr").innerHTML = '<div class="notification is-primary">Votre message a bien été envoyé, nous vous recontacterons au plus vite !</div>';
+        }
+
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc6HahV7ZPAzT4bWb3IibyJqJ3XemVqZ0&map_ids=fdc96da436c66769&callback=initMap&libraries=&v=weekly" async)
+script(src="https://www.google.com/recaptcha/api.js")

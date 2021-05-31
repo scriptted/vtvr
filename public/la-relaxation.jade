@@ -8,13 +8,16 @@ section.first
                     | Relaxation
 
                 p.main.mb-6
-                    | La technologie de Réalité Virtuelle nous permet de vous proposer des séances de relaxation dans des environnements immersifs. Enfilez le casque et laissez vous simplement porter par un programme de détente.
+                    | La relaxation est un procédé permettant d’agir sur nos états mentaux en contrôlant le tonus musculaire.
+                    br
+                    | Se relaxer, cela s’apprend et cela offre de nombreux bénéfices notamment dans la gestion du stress au quotidien, elle nous permet également de dépasser nos difficultés d’endormissement et donc d’améliorer la qualité de notre sommeil.
+
             div.column.is-5
             div.column.is-1
             div.column.is-12.filler
             div.column.is-12.has-text-centered.goto-ctr.is-hidden-touch
                 a(href="#" data-goto="relaxation-2" class="main-goto goto") 
-                    | Ça ressemble à quoi ?
+                    | Découvrir la relaxation en réalité virtuelle
                     br
                     i.fas.fa-chevron-down.faa-falling.animated.center
     img.illustration.is-hidden-touch(src="/images/girl-vr.png")
@@ -25,6 +28,27 @@ section.first
     img.frame.frame-layer-5.is-hidden-touch(src="/images/frame-layer-5_alt.png")
     img.frame.frame-layer-6.is-hidden-touch(src="/images/frame-layer-6_alt.png")
 section(id="relaxation-2")
+    div.container.is-fluid.full-height
+        div.columns.is-vcentered.is-desktop.is-multiline
+            div.column.is-1
+            div.column.is-5
+                p.mb-6
+                    | La réalité virtuelle facilite la relaxation en vous immergeant dans différents lieux et panorama. 
+                p.mb-6
+                    br
+                    | Que ce soit pour une séance ou pour plusieurs, venez découvrir la relaxation immersive avec des psychologues formées, capable de vous informer et de vous accompagner dans votre découverte de la relaxation.
+
+            div.column.is-1
+            div.column.is-4.has-text-centered
+                img.is-square.reveal(src="/images/relaxation-vr.jpg")
+            div.column.is-1
+            div.column.is-12.filler
+            div.column.is-12.has-text-centered.goto-ctr.is-hidden-touch
+                a(href="#" data-goto="relaxation-3" class="main-goto goto") 
+                    | Ça ressemble à quoi ?
+                    br
+                    i.fas.fa-chevron-down.faa-falling.animated.center
+section(id="relaxation-3")
     video(width="100%" height="100%" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline)
         source(src="images/vr-space.mp4" type="video/mp4")
     div(id="hoverjs").card
